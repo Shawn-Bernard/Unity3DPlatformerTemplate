@@ -92,8 +92,10 @@ MonoBehaviour:
   SquashAndStretchRecoverSpeed: 5
   maxStepClimbable: 2
   maxTraversableSlope: 40
+  maxGroundedSlope: 65
   slideSpeed: 42
   platformGripForce: 7.7
+  extraGroundingHeightCheck: 0.1
   stompDamage: 1
   airRotationSpeed: 0.38
   airAcceleration: 18
@@ -104,6 +106,7 @@ MonoBehaviour:
   - {x: 0, y: 17, z: 6}
   chainJumpWindow: 0.1
   jumpBufferTime: 0.17
+  groundedTimeBeforeJump: 0.12
   jumpAudio: {fileID: 0}
   landAudio: {fileID: 0}
   onJumpPerformed:
@@ -747,6 +750,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45.000004
       objectReference: {fileID: 0}
+    - target: {fileID: -1924330416772942832, guid: 52241262e53495d45952e762d0a06c42,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1793059242609255079, guid: 5fefe36612b8a4c46902c3e17256cb22,
+        type: 3}
     - target: {fileID: 445712794880070669, guid: 52241262e53495d45952e762d0a06c42,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -807,6 +816,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6435320000920075851, guid: 52241262e53495d45952e762d0a06c42,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 988656143610355917, guid: 5fefe36612b8a4c46902c3e17256cb22,
+        type: 3}
     - target: {fileID: 7604367576434143486, guid: 52241262e53495d45952e762d0a06c42,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
