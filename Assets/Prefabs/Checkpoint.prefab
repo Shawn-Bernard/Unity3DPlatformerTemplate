@@ -86,7 +86,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7fe720bdb8d2a64e8c19b5e3a44a188, type: 2}
+  - {fileID: 2100000, guid: 3bf51cb4c59dca745afa41938713047e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInitialCheckpoint: 0
-  inactiveMaterial: {fileID: 2100000, guid: f7fe720bdb8d2a64e8c19b5e3a44a188, type: 2}
-  activeMaterial: {fileID: 2100000, guid: 9ed9a00ddfa315444a3c5ea8eb6b56ce, type: 2}
+  inactiveMaterial: {fileID: 2100000, guid: 3bf51cb4c59dca745afa41938713047e, type: 2}
+  activeMaterial: {fileID: 2100000, guid: 7a938b3b2b37ef44da2ff897b2ced62d, type: 2}
   activationEffect: {fileID: 0}
   activationSound: {fileID: 0}
   onCheckpointActivated:
