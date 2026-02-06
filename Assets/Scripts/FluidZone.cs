@@ -29,8 +29,9 @@ public class FluidZone : MonoBehaviour
     public Vector3 buoyancyForce = new Vector3(0, 29.0f, 0);
     
     [Header("Physics Settings")]
-    [Tooltip("Whether to apply fluid physics to the player")]
+    [Tooltip("Whether to apply fluid physics to the player or enemy")]
     public bool affectPlayer = true;
+    public bool affectEnemy = true;
     
     [Tooltip("Fluid resistance applied to object movement (0 = none, 1 = maximum)")]
     [Range(0, 1)]
@@ -80,7 +81,6 @@ public class FluidZone : MonoBehaviour
             PlaySplashSound(null);
             return;
         }
-        
         if (!ShouldAffectObject(rigidbody)) return;
         
         PlaySplashSound(rigidbody);
@@ -95,18 +95,28 @@ public class FluidZone : MonoBehaviour
         
         RestoreOriginalPhysics(rigidbody);
     }
-    
+
     private bool ShouldAffectObject(Rigidbody rigidbody)
     {
-        return affectPlayer || !rigidbody.CompareTag("Player");
+        if (rigidbody.CompareTag("Player") && !affectPlayer)
+        {
+            return false;
+        }
+
+        if (rigidbody.CompareTag("Enemy") && !affectEnemy)
+        {
+            return false;
+        }
+
+        return true;
     }
-    
+
     private void PlaySplashSound(Rigidbody rigidbody)
     {
         if (!immersionSound) return;
         
         float volume = rigidbody != null ? 
-            Mathf.Clamp01(rigidbody.velocity.magnitude / 5f) : 
+            Mathf.Clamp01(rigidbody.linearVelocity.magnitude / 5f) : 
             1f;
             
         AudioSource.PlayClipAtPoint(immersionSound, transform.position, volume);
@@ -114,28 +124,29 @@ public class FluidZone : MonoBehaviour
     
     private void StoreDragValues(Rigidbody rigidbody)
     {
-        originalDragValues[rigidbody.gameObject] = (rigidbody.drag, rigidbody.angularDrag);
+        originalDragValues[rigidbody.gameObject] = (rigidbody.linearDamping, rigidbody.angularDamping);
     }
     
     private void ApplyFluidPhysics(Rigidbody rigidbody)
     {
-        rigidbody.drag = linearDrag;
-        rigidbody.angularDrag = angularDrag;
+        //Debug.Log(rigidbody.gameObject.name + " this object is being affected");
+        rigidbody.linearDamping = linearDrag;
+        rigidbody.angularDamping = angularDrag;
     }
     
     private void RestoreOriginalPhysics(Rigidbody rigidbody)
     {
         if (originalDragValues.TryGetValue(rigidbody.gameObject, out var dragValues))
         {
-            rigidbody.drag = dragValues.linear;
-            rigidbody.angularDrag = dragValues.angular;
+            rigidbody.linearDamping = dragValues.linear;
+            rigidbody.angularDamping = dragValues.angular;
             originalDragValues.Remove(rigidbody.gameObject);
         }
         else
         {
             // Fallback to Unity's default values
-            rigidbody.drag = 0f;
-            rigidbody.angularDrag = 0.05f;
+            rigidbody.linearDamping = 0f;
+            rigidbody.angularDamping = 0.05f;
             Debug.LogWarning($"Original physics values not found for {rigidbody.gameObject.name}. Restored defaults.", rigidbody);
         }
     }

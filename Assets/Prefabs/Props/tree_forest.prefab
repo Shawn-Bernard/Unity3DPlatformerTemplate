@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4632124381141821992}
   - component: {fileID: 4711915833039063903}
   - component: {fileID: 4322773964628204153}
-  - component: {fileID: 7840391248918010745}
+  - component: {fileID: 4962522124016488929}
   m_Layer: 0
   m_Name: tree_forest
   m_TagString: Untagged
@@ -59,6 +59,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -85,8 +88,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7840391248918010745
-MeshCollider:
+--- !u!65 &4962522124016488929
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,7 +106,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -308505020396475978, guid: 74fd3372afccd8b4e9a763f77aa2ae14, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.39, y: 3.0005136, z: 0.36}
+  m_Center: {x: 0, y: 1.5002568, z: 0.00000017881393}
