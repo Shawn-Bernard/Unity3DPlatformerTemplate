@@ -23,6 +23,17 @@ public class PickupInteractable : PhysicsInteractable
     
     public static int PickedUpObjectLayer {get; private set;} = -1;
     int originalLayer = 0;
+
+    private Vector3 StartPosition;
+
+    private void Start()
+    {
+        StartPosition = transform.position;
+    }
+    public void ResetPosition()
+    {
+        transform.position = StartPosition;
+    }
     private void OnJointBreak(float breakForce)
     {
         Debug.Log("JOINT BROKE!");

@@ -73,7 +73,8 @@ public class WaypointMover : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            if (child.CompareTag("Waypoint")) {
+            if (child.CompareTag("Waypoint")) 
+            {
                 waypoints.Add(child);
             }
         }
@@ -84,9 +85,14 @@ public class WaypointMover : MonoBehaviour
             enabled = false;
             return;
         }
-        
+
+        //Updated to only remove the waypoints as child instead of everything
+        foreach (Transform waypoint in waypoints)
+        {
+            waypoint.SetParent(null);
+        }
         // Detach waypoints so they stay in place while platform moves
-        transform.DetachChildren();
+        //transform.DetachChildren();
     }
     
     /// <summary>

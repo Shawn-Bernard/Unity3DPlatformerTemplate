@@ -45,6 +45,16 @@ public class CameraOverrideAction : TriggerAction
             if (mainCamera == null)
                 mainCamera = Camera.main;
             // mainCamera = Camera.main;
+            /*
+             * if (mainCamera == null)
+                {
+                    GameObject camObject = GameObject.FindGameObjectWithTag("MainCamera");
+                    if (camObject != null)
+                    {
+                        mainCamera = camObject.GetComponent<Camera>();
+                    }
+                }
+             */
             if (mainCamera == null || lookAtTarget == null) 
             {
                 Complete();

@@ -13,6 +13,18 @@ public class PushableInteractable : PhysicsInteractable
 
     private MovementController movementController;
     private float defaultPlayerRotationSpeed;
+
+    private Vector3 StartPosition;
+
+    private void Start()
+    {
+        StartPosition = transform.position;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = StartPosition;
+    }
     private void OnJointBreak(float breakForce)
     {
         //Debug.Log($"JOINT BROKE! FORCE {breakForce}");
