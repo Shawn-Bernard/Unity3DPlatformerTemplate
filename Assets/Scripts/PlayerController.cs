@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
         // Update animator parameters
         characterAnimator.SetFloat(MovementController.AnimationID_DistanceToTarget, moveController.distanceToDestination);
         characterAnimator.SetBool(MovementController.AnimationID_IsGrounded, moveController.isGrounded);
-        characterAnimator.SetFloat(MovementController.AnimationID_YVelocity, rb.velocity.y);
+        characterAnimator.SetFloat(MovementController.AnimationID_YVelocity, rb.linearVelocity.y);
     }
 
 } 
