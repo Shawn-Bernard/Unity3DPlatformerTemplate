@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private AdvancedMoveController moveController;
     private Rigidbody rb;
     private DashController dashController;
+    private JetpackController jetpackController;
     
     // Movement state
     private Vector3 moveDirection;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         TryGetComponent(out playerInput);
         TryGetComponent(out dashController);
+        TryGetComponent(out jetpackController);
 
         // Cache component references
         moveController = GetComponent<AdvancedMoveController>();
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
         if (cameraFollower)
         {
             if (playerInput.camera == null) {
-                //Debug.Log(actions["Jump"].GetBindingDisplayString());
+                //Debug.Log(players["Jump"].GetBindingDisplayString());
                 playerInput.camera = cameraFollower.GetComponent<Camera>();
             }
             cameraFollower.transform.SetParent(transform.parent);
@@ -122,6 +124,43 @@ public class PlayerController : MonoBehaviour
     void OnCameraOrbit(InputValue inputVal)
     {
         cameraFollower.OrbitInput = inputVal.Get<float>();
+    }
+    void OnJetpack()
+    {
+        if (!GameManager.Instance.IsShowingPauseMenu)
+        {
+            jetpackController.RequestJetpack();
+        }
+        //Debug.Log("Jetpack was pressed");
+    }
+
+    void OnJetpackAscend(InputValue inputValue)
+    {
+        if (!GameManager.Instance.IsShowingPauseMenu)
+        {
+            if (inputValue.isPressed)
+            {
+                jetpackController.RequestAscend();
+            }
+            else
+            {
+                jetpackController.RequestHover();
+            }
+        }
+    }
+    void OnJetpackDescend(InputValue inputValue)
+    {
+        if (!GameManager.Instance.IsShowingPauseMenu)
+        {
+            if (inputValue.isPressed)
+            {
+                jetpackController.RequestDescend();
+            }
+            else
+            {
+                jetpackController.RequestHover();
+            }
+        }
     }
 
     /// <summary>
