@@ -109,6 +109,7 @@ Material:
     - _GlossyReflections: 0
     - _GridBlending: 1
     - _GridTiling: 0.2
+    - _HueShift: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -122,6 +123,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _WORLDSPACE: 0
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
